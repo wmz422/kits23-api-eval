@@ -26,12 +26,14 @@ bash setup.sh
 
 ## 3. 下载数据并直接测试 200 条
 
+模型由你指定，支持提供图像输入的 OpenAI 兼容 Chat Completions 接口。配置中的 `model` 默认为空；必须通过 `--model`、`API_MODEL` 环境变量或配置文件的 `api.model` 填写实际模型，优先级依次递减。未指定时会在下载数据或请求接口前报错。
+
 将下面的地址和模型名改为你实际接口的值。`--model` 必须与服务提供的 model ID/别名一致；如需查看，可访问该服务的 `/v1/models`。
 
 ```bash
 .venv/bin/python run.py \
   --base-url http://127.0.0.1:8000/v1 \
-  --model Qwen/Qwen3.5-397B-A17B-GPTQ-Int4
+  --model your-model-id
 ```
 
 这条命令依次执行：检查配置 → 下载 `kits23.zip` → 校验归档 → 提取固定 200 条样本 → 校验每个文件 → 调用原 `scripts/test_api.py` → 输出总分和逐类指标。每条样本一次请求，无自动重试；默认并发 1、seed 42、最多输出 8192 tokens、每请求超时 300 秒。若接口有鉴权，从环境提供 `OPENAI_API_KEY`；无鉴权服务无需设置。
@@ -72,7 +74,7 @@ python3 scripts/prepare_data.py --archive /path/to/kits23.zip
 预检查完整 200 条输入、保存选样计划，**不调用模型接口**：
 
 ```bash
-python3 run.py --skip-download --dry-run
+python3 run.py --skip-download --dry-run --model your-model-id
 ```
 
 `--dry-run` 本身默认也会准备数据；加 `--skip-download` 可强制禁用下载，缺数据则明确报错。计划在 `results/plan_<时间>/`。它只验证输入和配置，不验证模型服务是否已就绪。
@@ -94,6 +96,8 @@ python3 run.py --config configs/api.local.json
 ```
 
 `api` 内设置 `base_url`、`model`、`api_key_env`、`timeout_seconds` 和 `request`；`test` 内设置 `num_cases`、`workers` 和 `seed`。密钥放在 `api_key_env` 指定的环境变量中，不写进 JSON。`api.request` 会原样传给 Chat Completions 接口，后端的 `chat_template_kwargs` 等也可在这里配置。
+
+使用 vLLM 部署的 Qwen 视觉模型时，`base_url` 填服务的 `http://服务器:端口/v1`，`model` 填服务实际提供的模型 ID/别名。脚本的 `image_url` + base64 图片请求符合 [vLLM 多模态 Chat Completions 格式](https://github.com/vllm-project/vllm/blob/main/docs/features/multimodal_inputs.md)。服务若设置了 API key，通过 `OPENAI_API_KEY` 提供；无鉴权服务可留空。需要模型本身支持图像输入。
 
 若后端要求 `max_completion_tokens`，用它替换 `max_tokens`，不要同时发送两个。Thinking 后端需要将最终 JSON 放入 `choices[0].message.content`；`reasoning_content` 会完整保存，但不会拿它猜 label。支持闭合的前置 `<think>...</think>` 和外层 JSON 代码围栏。截断或非 `stop` 结束会计为解析失败，可结合原始响应调整 token/超时配置后新建批次。
 

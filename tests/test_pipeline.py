@@ -128,7 +128,7 @@ class PipelineTests(unittest.TestCase):
             data.destination(target, 'kits23/train/image.png')
 
     def test_bad_config_fails_before_download(self):
-        command = [sys.executable, str(ROOT / 'run.py'), '--num-cases', '201',
+        command = [sys.executable, str(ROOT / 'run.py'), '--model', 'synthetic', '--num-cases', '201',
                    '--data-dir', str(self.directory / 'absent'), '--output-dir', str(self.directory / 'out')]
         result = subprocess.run(command, cwd='/tmp', text=True, capture_output=True, timeout=15)
         self.assertEqual(result.returncode, 2)

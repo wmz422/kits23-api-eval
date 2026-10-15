@@ -35,14 +35,14 @@ def main():
     config = json.loads(config_path.read_text(encoding="utf-8"))
     api, test = config["api"], config["test"]
     api["base_url"] = args.base_url or os.environ.get("API_BASE_URL") or api["base_url"]
-    api["model"] = args.model or os.environ.get("API_MODEL") or api["model"]
+    api["model"] = args.model or os.environ.get("API_MODEL") or api.get("model", "")
     if api.get("api_key"):
         raise ValueError("Use the api_key_env environment variable for credentials, not an API key in JSON")
     url = urlsplit(api["base_url"])
     if url.scheme not in ("http", "https") or not url.netloc or url.username or url.password or url.query or url.fragment:
         raise ValueError("api.base_url must be an HTTP(S) endpoint without credentials/query/fragment")
     if not isinstance(api["model"], str) or not api["model"].strip() or "YOUR_" in api["model"]:
-        raise ValueError("Set api.model or --model to the server's visual model ID")
+        raise ValueError("No default model: set --model, API_MODEL, or config api.model to the server's visual model ID")
     for key, value in (("num_cases", args.num_cases), ("workers", args.workers), ("seed", args.seed)):
         if value is not None:
             test[key] = value
