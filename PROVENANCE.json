@@ -1,0 +1,21 @@
+{
+  "exported_at": "2026-10-15",
+  "origin": "unified project; standalone portable export",
+  "source_api_script": "doc/2026-10-14-01-kits23-reasoning-generation/code/test_api.py",
+  "source_api_script_sha256": "5f94592eb2e4147a1229edf3f65038d93f6fee61e00c5e9106e43d99cc7723af",
+  "api_script_copy": "scripts/test_api.py",
+  "api_script_changed": false,
+  "source_jobs": "doc/2026-10-11-03-kits23-reasoning-warmup/results/batch_200_01/jobs.jsonl",
+  "source_jobs_sha256": "c6c4fed92f2f30d5ef4a4af34238fb561f8b533b7d246bd6d95b66bbb3bfc50b",
+  "manifest_transform": "Keep sample IDs, train split, four labels, original image/mask SHA-256; replace machine paths with ZIP member paths; omit SAMTok tokens and unused training metadata.",
+  "num_slices": 200,
+  "num_patient_case_keys": 160,
+  "per_label": {
+    "tumor_only": 50,
+    "cyst_only": 50,
+    "both": 50,
+    "neither": 50
+  },
+  "seed": 42,
+  "reference": "Train candidates, exported annotations; neither source GT not independently verified. Not a heldout benchmark."
+}

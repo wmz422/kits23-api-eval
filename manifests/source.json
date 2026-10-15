@@ -1,0 +1,12 @@
+{
+  "repo_id": "microsoft/BiomedParseData",
+  "repo_type": "dataset",
+  "revision": "4e5ab97e7a0a8b3e23b4cd0ddf6eb2edf6f01c46",
+  "filename": "kits23.zip",
+  "size_bytes": 16178227112,
+  "sha256": "aa8b63aec1bd916d48991e33c2ac7c83913d1df48a9b15e786344058ecbbbbcd",
+  "url": "https://huggingface.co/datasets/microsoft/BiomedParseData",
+  "license": "cc-by-nc-sa-4.0",
+  "access": "gated; accept terms on Hugging Face and use HF_TOKEN",
+  "cases_manifest_sha256": "11add639d944d83153f0d04ac30afae048ce3d73b4f3f4134fd29266fdd2de07"
+}

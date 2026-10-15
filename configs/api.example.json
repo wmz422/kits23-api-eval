@@ -1,0 +1,19 @@
+{
+  "api": {
+    "base_url": "http://127.0.0.1:8000/v1",
+    "model": "Qwen/Qwen3.5-397B-A17B-GPTQ-Int4",
+    "api_key_env": "OPENAI_API_KEY",
+    "timeout_seconds": 300,
+    "request": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "max_tokens": 8192
+    }
+  },
+  "test": {
+    "num_cases": 200,
+    "seed": 42,
+    "workers": 1
+  },
+  "output_dir": "../results"
+}
