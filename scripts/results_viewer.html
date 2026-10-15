@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KiTS23 · API 生成结果</title>
+<style>
+:root{color-scheme:light;--ink:#1e3040;--muted:#637485;--line:#dce4e8;--teal:#157b78;--soft:#eef7f5;--red:#ae4b44;--bg:#f3f6f7}*{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--bg);font:14px/1.6 system-ui,-apple-system,"Noto Sans CJK SC",sans-serif}button,input,select{font:inherit}button,select{cursor:pointer}button{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:7px 12px}button:hover{border-color:var(--teal);background:var(--soft)}button:disabled{opacity:.45;cursor:default}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #64b7b1;outline-offset:2px}input,select{max-width:100%;border:1px solid #ccd8df;border-radius:8px;background:#fff;color:var(--ink);padding:8px 10px}header{background:#fff;border-bottom:1px solid var(--line);padding:20px 28px;display:flex;gap:24px;align-items:center;justify-content:space-between}h1{font-size:21px;letter-spacing:-.5px;margin:0}header p{color:var(--muted);font-size:12px;margin:2px 0 0}.brand{flex-shrink:0}.run-controls{display:flex;align-items:center;gap:10px;min-width:0}.run-controls select{width:min(520px,47vw)}.workspace{max-width:1800px;margin:auto;padding:22px 26px;display:grid;grid-template-columns:245px minmax(0,1fr);gap:22px}aside{min-width:0}.panel{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}.sidebar-title{padding:15px 16px 8px;font-size:15px;font-weight:650}.filters{padding:0 12px 12px;display:grid;gap:9px}.filters label{display:grid;gap:3px;color:var(--muted);font-size:12px}.filters input{width:100%}#list-count{padding:0 15px 10px;font-size:12px;color:var(--muted)}#case-list{max-height:66vh;overflow:auto;border-top:1px solid var(--line);padding:6px}.case{display:block;width:100%;text-align:left;border-color:transparent;padding:10px;border-radius:7px;margin:2px 0}.case.active{background:var(--soft);border-color:#a3cfca}.case-top{display:flex;justify-content:space-between;gap:6px;font-size:13px;font-weight:600}.case-bottom{font-size:11px;color:var(--muted);margin-top:3px;display:flex;justify-content:space-between;gap:5px}.dot{font-size:11px}.good{color:#257864}.bad{color:var(--red)}.pending{color:var(--muted)}main{min-width:0}.stats{display:flex;align-items:center;gap:25px;padding:12px 18px;margin-bottom:16px}.stat{display:flex;gap:8px;align-items:baseline}.stat b{font-size:21px;font-weight:650;font-variant-numeric:tabular-nums}.stat span{font-size:12px;color:var(--muted)}.sample-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:2px 0 12px}h2{font-size:18px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:2px;word-break:break-all}.nav{display:flex;gap:8px;flex-shrink:0}.badges{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:16px}.badge{font-size:12px;border-radius:6px;padding:4px 9px;background:#e8eef1}.badge.correct{background:#e7f4ed;color:#257864}.badge.incorrect{background:#fbeeea;color:var(--red)}.images{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card-heading{padding:12px 15px;border-bottom:1px solid var(--line);font-weight:600;display:flex;align-items:center;justify-content:space-between;gap:10px}.card-heading small{color:var(--muted);font-weight:400;font-size:11px}.image-frame{position:relative;aspect-ratio:1;background:#111821;overflow:hidden}.image-frame img{position:absolute;width:100%;height:100%;object-fit:contain;left:0;top:0}.image-error{position:absolute;inset:0;display:grid;place-items:center;background:#111821;color:#eab6ab;padding:20px;text-align:center}.mask-controls{padding:12px 14px;display:flex;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px}.mask-controls label{display:flex;align-items:center;gap:6px}.mask-controls input[type=range]{width:100px;padding:0;accent-color:var(--teal)}.mask-controls input[type=checkbox]{accent-color:var(--teal)}.mask-controls select{padding:3px 7px}.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:11px;color:var(--muted);padding:0 14px 12px}.swatch{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px}.note{color:var(--muted);font-size:12px;margin:10px 0 14px}.answer{margin-top:16px}.answer .card-heading{background:#fbfcfc}pre{margin:0;padding:18px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font:12.5px/1.8 ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;color:#24394a;tab-size:2}#answer-json{min-height:160px}.error-note{color:var(--red);background:#fff5f2;padding:9px 15px;font-size:12px;overflow-wrap:anywhere}details{margin-top:16px}summary{padding:14px 16px;font-weight:550;cursor:pointer;user-select:none}details[open] summary{border-bottom:1px solid var(--line)}#raw-answer{font-size:12px;max-height:650px;overflow:auto;background:#fafcfd}.empty{padding:70px 20px;text-align:center;color:var(--muted)}#message{margin-bottom:16px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:10px;color:var(--muted)}.hidden,[hidden]{display:none!important}#run-state{font-size:11px;color:var(--muted)}@media(min-width:1600px){.workspace{grid-template-columns:270px minmax(0,1fr)}}@media(max-width:1000px){header{padding:16px 20px;align-items:flex-start;flex-direction:column;gap:12px}.run-controls{width:100%}.run-controls select{width:100%;flex:1}.workspace{padding:18px;grid-template-columns:210px minmax(0,1fr);gap:16px}.images{grid-template-columns:1fr}.stats{gap:14px;flex-wrap:wrap}.stat b{font-size:18px}.mask-controls{gap:8px}}@media(max-width:650px){.workspace{display:block;padding:12px}.sidebar-title{padding-top:10px}.filters{grid-template-columns:1fr 1fr}.filters label:first-child{grid-column:1/-1}#case-list{max-height:170px}aside{margin-bottom:16px}.stats{padding:10px 12px;gap:12px}.stat{gap:5px}.stat b{font-size:17px}.stat span{font-size:11px}.sample-heading{align-items:flex-start}h2{font-size:16px}.nav button{padding:5px 8px}header{padding:14px}.images{gap:12px}pre{padding:13px;font-size:12px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><h1>KiTS23 <span style="font-weight:400;color:#81929d">/</span> API 生成结果</h1><p>按运行批次审查图像、标注与模型回答</p></div><div class="run-controls"><label for="run-select">运行批次</label><select id="run-select" aria-label="选择生成批次"></select><button id="refresh" title="发现新运行并更新当前结果">刷新</button></div></header>
+<div class="workspace">
+<aside class="panel"><div class="sidebar-title">样本</div><div class="filters"><label>搜索病例或样本<input id="search" placeholder="case_00290 / 样本编号" type="search"></label><label>GT 类别<select id="label-filter"><option value="all">全部类别</option><option value="tumor_only">仅肿瘤</option><option value="cyst_only">仅囊肿</option><option value="both">肿瘤＋囊肿</option><option value="neither">两类均无</option></select></label><label>结果<select id="result-filter"><option value="all">全部结果</option><option value="correct">label 正确</option><option value="incorrect">label 错误或失败</option><option value="errors">请求或解析失败</option><option value="pending">等待结果</option></select></label></div><div id="list-count">正在加载…</div><div id="case-list"></div></aside>
+<main>
+<div id="message" role="status">正在发现运行批次…</div>
+<div id="stats" class="stats panel hidden"><div class="stat"><b id="stat-total">—</b><span>用例</span></div><div class="stat"><b id="stat-completed">—</b><span>已返回</span></div><div class="stat"><b id="stat-accuracy">—</b><span>label 准确率</span></div><span id="run-state"></span></div>
+<section id="sample" class="hidden" aria-busy="false">
+<div class="sample-heading"><div><h2 id="case-title"></h2><div class="sub" id="image-name"></div></div><div class="nav"><button id="previous" aria-label="上一个样本">← 上一个</button><button id="next" aria-label="下一个样本">下一个 →</button></div></div>
+<div class="badges"><span id="gt-label" class="badge"></span><span id="pred-label" class="badge"></span><span id="correct-badge" class="badge"></span><span class="sub" id="sample-meta"></span></div>
+<div class="images"><div class="panel"><div class="card-heading">原图<small>原始输入 PNG</small></div><div class="image-frame"><img id="original" alt="模型输入的原始CT图像"><div id="original-error" class="image-error hidden">原图加载失败</div></div></div><div class="panel"><div class="card-heading">GT mask 叠加图<small>肿瘤 / 囊肿标注</small></div><div class="image-frame"><img id="overlay-base" alt="GT叠加图的原始底图"><img id="mask-overlay" alt="GT标注透明叠加层" style="opacity:.45"><div id="overlay-error" class="image-error hidden">叠加图加载失败</div></div><div class="mask-controls"><label for="target">类别<select id="target"><option value="all">全部病灶</option></select></label><label for="opacity">透明度<input id="opacity" type="range" min="0" max="100" value="45"><span id="opacity-value">45%</span></label><label><input type="checkbox" id="organ">肾脏参考</label></div><div class="legend"><span><i class="swatch" style="background:rgb(245,116,86)"></i>肿瘤</span><span><i class="swatch" style="background:rgb(62,168,244)"></i>囊肿</span><span><i class="swatch" style="background:rgb(84,189,142)"></i>肾脏（器官）</span></div></div></div>
+<div class="note" id="mask-note"></div>
+<div class="panel answer"><div class="card-heading"><span>模型生成的 JSON 回答</span><small id="finish-reason"></small></div><div id="parse-note" class="error-note hidden"></div><pre id="answer-json"></pre></div>
+<details id="raw-details" class="panel"><summary>查看完整原始返回</summary><pre id="raw-answer">展开后加载完整响应。</pre></details>
+</section>
+</main></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const names={tumor_only:'仅肿瘤',cyst_only:'仅囊肿',both:'肿瘤＋囊肿',neither:'两类均无'};
+let runs=[],samples=[],visible=[],runId='',selectedIndex=null,revision=0,current=null,rawLoaded=false,listRevision=0;
+const initial=new URLSearchParams(location.search);
+async function getJSON(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok){let e=await r.json();throw new Error(e.error||'加载失败')}return r.json()}
+function query(extra={}){return new URLSearchParams({run:runId,index:String(selectedIndex),...extra}).toString()}
+function message(text){$('message').textContent=text;$('message').classList.toggle('hidden',!text)}
+function label(value){return names[value]||value||'无有效 label'}
+function errorStatus(s){return !['ok','pending'].includes(s)}
+function updateStats(){const r=runs.find(r=>r.id===runId);if(!r)return;$('stats').classList.remove('hidden');$('stat-total').textContent=r.total;$('stat-completed').textContent=r.completed;$('stat-accuracy').textContent=r.accuracy===null?'—':(r.accuracy*100).toFixed(1)+'%';$('run-state').textContent=r.finished?'本次运行已结束':'运行中 / 部分结果';}
+async function refresh(){
+  const preferred=runId||initial.get('run');$('refresh').disabled=true;
+  try{const data=await getJSON('/api/runs');runs=data.runs;$('run-select').replaceChildren();
+    for(const run of runs){const option=document.createElement('option');option.value=run.id;option.textContent=`${run.id.replace('run_','')} · ${run.total}例 · ${run.accuracy===null?'—':(run.accuracy*100).toFixed(1)+'%'}`;$('run-select').append(option)}
+    if(!runs.length){runId='';samples=[];revision++;current=null;$('sample').classList.add('hidden');$('stats').classList.add('hidden');$('case-list').replaceChildren();$('list-count').textContent='0 个样本';message('还没有生成结果。运行 API 测试脚本后，点击「刷新」选择该批次。');return}
+    const chosen=runs.some(r=>r.id===preferred)?preferred:runs[0].id;$('run-select').value=chosen;await loadRun(chosen,selectedIndex||Number(initial.get('index'))||null);
+  }catch(e){message(e.message)}finally{$('refresh').disabled=false}
+}
+async function loadRun(id,preferred=null){
+  runId=id;current=null;revision++;const ticket=++listRevision;$('sample').classList.add('hidden');message('正在加载这次运行…');updateStats();
+  try{const data=await getJSON('/api/samples?'+new URLSearchParams({run:id}));if(ticket!==listRevision)return;samples=data.samples;applyFilters(preferred)}catch(e){if(ticket===listRevision)message(e.message)}
+}
+function applyFilters(preferred=selectedIndex){
+  const search=$('search').value.trim().toLowerCase(),group=$('label-filter').value,filter=$('result-filter').value;
+  visible=samples.filter(s=>(group==='all'||s.expected_label===group)&&(!search||`${s.index} ${s.case_id} ${s.sample_id}`.toLowerCase().includes(search))&&(filter==='all'||filter==='correct'&&s.correct&&s.status==='ok'||filter==='incorrect'&&s.status!=='pending'&&!s.correct||filter==='errors'&&errorStatus(s.status)||filter==='pending'&&s.status==='pending'));
+  $('list-count').textContent=`${visible.length} / ${samples.length} 个样本`;renderList();
+  if(!visible.length){revision++;current=null;$('sample').classList.add('hidden');message('没有符合筛选条件的样本。');return}
+  selectSample(visible.some(s=>s.index===preferred)?preferred:visible[0].index);
+}
+function renderList(){
+  $('case-list').replaceChildren();
+  for(const item of visible){const b=document.createElement('button');b.className='case'+(item.index===selectedIndex?' active':'');b.dataset.index=item.index;b.setAttribute('aria-pressed',String(item.index===selectedIndex));
+    const top=document.createElement('div');top.className='case-top';const title=document.createElement('span');title.textContent=String(item.index).padStart(2,'0')+' · '+item.case_id.replace('kits23:','');const badge=document.createElement('span');badge.className='dot '+(item.status==='pending'?'pending':item.correct?'good':'bad');badge.textContent=item.status==='pending'?'等待':item.correct?'正确':errorStatus(item.status)?'失败':'错误';top.append(title,badge);
+    const bottom=document.createElement('div');bottom.className='case-bottom';const gt=document.createElement('span');gt.textContent='GT '+label(item.expected_label);const pred=document.createElement('span');pred.textContent='→ '+label(item.predicted_label);bottom.append(gt,pred);b.append(top,bottom);b.addEventListener('click',()=>selectSample(item.index));$('case-list').append(b)}
+}
+function updateOverlay(){if(!current)return;$('overlay-error').classList.add('hidden');$('mask-overlay').src='/asset?'+query({kind:'overlay',target:$('target').value,organ:$('organ').checked?'1':'0'})}
+async function selectSample(index){
+  selectedIndex=index;const token=++revision;current=null;rawLoaded=false;$('raw-details').open=false;$('raw-answer').textContent='展开后加载完整响应。';$('sample').classList.add('hidden');$('sample').setAttribute('aria-busy','true');message('正在加载样本…');renderList();
+  const position=visible.findIndex(s=>s.index===index);$('previous').disabled=position<=0;$('next').disabled=position<0||position===visible.length-1;
+  try{const detail=await getJSON('/api/sample?'+query());if(token!==revision)return;current=detail;
+    $('case-title').textContent=String(index).padStart(2,'0')+' · '+detail.case_id.replace('kits23:','');$('image-name').textContent=detail.image_name;
+    $('gt-label').textContent='GT：'+label(detail.expected_label);$('pred-label').textContent='模型：'+label(detail.predicted_label);
+    $('correct-badge').textContent=detail.status==='pending'?'等待结果':detail.correct?'label 正确':errorStatus(detail.status)?'返回失败 / 无有效 label':'label 不一致';$('correct-badge').className='badge '+(detail.status==='pending'?'':detail.correct?'correct':'incorrect');
+    $('sample-meta').textContent=[detail.elapsed_seconds==null?'':detail.elapsed_seconds+'s',detail.usage?.total_tokens?detail.usage.total_tokens+' tokens':''].filter(Boolean).join(' · ');
+    $('target').replaceChildren(new Option('全部病灶','all'));for(const name of detail.targets)$('target').add(new Option(name==='Kidney tumor'?'肿瘤':'囊肿',name));$('organ').checked=false;$('organ').disabled=!detail.kidney_available;
+    $('mask-note').textContent=detail.targets.length?'叠加层为现有 GT 标注；绿色肾脏参考仅在勾选后显示。':'当前切片无肿瘤 / 囊肿 GT 标注。可勾选肾脏参考；阴性来源标注完整性仍待核对。';
+    $('original-error').classList.add('hidden');$('overlay-error').classList.add('hidden');const imageURL='/asset?'+query({kind:'image'});$('original').src=imageURL;$('overlay-base').src=imageURL;updateOverlay();
+    $('answer-json').textContent=detail.generated_json!==null?JSON.stringify(detail.generated_json,null,2):detail.unparsed_content||'没有可展示的最终回答。';
+    const warning=detail.error||(detail.generated_json===null&&detail.unparsed_content?'最终回答未能解析为 JSON，下面显示原始 content。':'');$('parse-note').textContent=warning;$('parse-note').classList.toggle('hidden',!warning);$('finish-reason').textContent=detail.finish_reason?'finish_reason: '+detail.finish_reason:'';
+    $('raw-details').classList.toggle('hidden',!detail.raw_available);$('sample').dataset.key=runId+':'+index;$('sample').setAttribute('aria-busy','false');$('sample').classList.remove('hidden');message('');history.replaceState(null,'','?'+query());
+  }catch(e){if(token===revision){$('sample').setAttribute('aria-busy','false');message(e.message)}}
+}
+$('raw-details').addEventListener('toggle',async()=>{
+  if(!$('raw-details').open||rawLoaded||!current)return;const token=revision;rawLoaded=true;$('raw-answer').textContent='正在加载完整返回…';
+  try{const response=await fetch('/api/raw?'+query(),{cache:'no-store'});if(!response.ok)throw new Error('原始返回加载失败');const raw=await response.text();if(token===revision)$('raw-answer').textContent=raw}catch(e){if(token===revision){rawLoaded=false;$('raw-answer').textContent=e.message}}
+});
+$('refresh').addEventListener('click',refresh);$('run-select').addEventListener('change',()=>loadRun($('run-select').value));
+for(const id of ['label-filter','result-filter'])$(id).addEventListener('change',()=>applyFilters());$('search').addEventListener('input',()=>applyFilters());
+for(const id of ['target','organ'])$(id).addEventListener('change',updateOverlay);
+$('opacity').addEventListener('input',()=>{$('mask-overlay').style.opacity=Number($('opacity').value)/100;$('opacity-value').textContent=$('opacity').value+'%'});
+function navigate(step){const at=visible.findIndex(s=>s.index===selectedIndex),next=visible[at+step];if(next)selectSample(next.index)}
+$('previous').addEventListener('click',()=>navigate(-1));$('next').addEventListener('click',()=>navigate(1));document.addEventListener('keydown',event=>{if(['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName)||event.ctrlKey||event.metaKey)return;if(event.key==='ArrowLeft')navigate(-1);if(event.key==='ArrowRight')navigate(1)});
+$('original').addEventListener('error',()=>$('original-error').classList.remove('hidden'));for(const id of ['overlay-base','mask-overlay'])$(id).addEventListener('error',()=>$('overlay-error').classList.remove('hidden'));
+refresh();
+</script>
+</body>
+</html>

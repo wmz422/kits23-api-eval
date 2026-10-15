@@ -132,9 +132,55 @@ python3 run.py --config configs/api.local.json
 
 这批数据是既有 **train 候选清单**，不是独立 heldout benchmark。`neither` 只依据现有二维导出标注，原始三维 GT 完整性仍待核验；分数表示与导出标签的一致率，不代表患者层面的临床诊断准确率。
 
+## 4. 可视化已保存的结果
+
+安装查看器的可选依赖（仅增加 Pillow；不需要 GPU，不会调用模型）：
+
+```bash
+bash setup.sh --viewer
+.venv/bin/python scripts/results_viewer.py --port 8507
+```
+
+打开 **http://127.0.0.1:8507**。默认读取仓库 `results/` 下的运行批次，支持：
+
+- 选择批次、搜索样本、按 GT 类别或正确/错误/失败筛选，以及前后/键盘导航。
+- 原图和逐类别 **GT mask 叠加**，调整透明度、切换肿瘤/囊肿和可选肾脏参考。
+- 模型最终 JSON、GT/预测 label、是否正确、耗时和 usage。
+- 完整原始响应默认折叠，展开后才加载，保留 `reasoning_content`；切换样本/批次重新折叠。
+- 运行过程中查看已返回样本；新批次生成后点击“刷新”即可发现。
+
+页面中的 mask 来自已有标注，当前模型 API 没有输出预测 mask。不会修改或重新评分已保存的结果。
+
+自定义结果根目录和数据目录：
+
+```bash
+.venv/bin/python scripts/results_viewer.py \
+  --root /path/to/results --data-dir /path/to/data --port 8507
+```
+
+`--root` 是包含各个 `run_*` 目录的父目录。`--data-dir` 是数据准备目录，内部应有 `extracted/kits23/train/` 和 `train_mask/`。若保存的绝对图像路径在新机器不存在，会从该数据目录按原文件名查找，再核验原 SHA-256；不需要改写历史结果。CLI 的显式相对路径以启动目录为准，默认目录以仓库为准。
+
+需要后台运行时使用启动器，它会打印 PID、日志和 URL，并检查服务就绪：
+
+```bash
+.venv/bin/python scripts/start_results_viewer.py --port 8507
+```
+
+后台记录默认在 `results/viewer_sessions/`；可用 `--name` 指定新名称，`--output-root` 指定日志位置。前台运行按 Ctrl+C 停止；后台运行可用启动记录中的 PID 停止该进程。已有端口被占用时换 `--port`，启动器不会停止旧服务或覆盖旧记录。
+
+查看器默认只监听 `127.0.0.1`。在服务器运行、从自己电脑浏览时，可在自己电脑上建立 SSH 转发：
+
+```bash
+ssh -L 8507:127.0.0.1:8507 your-user@your-server
+```
+
+然后在电脑打开 http://127.0.0.1:8507。需要直接监听服务器网卡时可显式增加 `--host 0.0.0.0`。
+
 ## 数据版本和本地验证
 
 `manifests/source.json` 固定官方 revision、ZIP 字节数和 SHA-256；`manifests/cases_200.jsonl` 固定每张图像/mask 的 SHA-256。`PROVENANCE.json` 记录原脚本和原清单的来源校验值。`data/prepared.json` 保存本机实际数据准备记录。原脚本没有改动，也没有复制旧的接口配置或密钥。
+
+查看器源自既有结果页面，源码来源与校验值同样记录在 `PROVENANCE.json`。查看器测试在安装 `--viewer` 依赖后运行；未安装 Pillow 时跳过这些可选测试。
 
 运行无需数据、无需联网的工程测试（合成 PNG 和本地模拟 HTTP；不调用真实模型）：
 

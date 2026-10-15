@@ -17,5 +17,22 @@
     "neither": 50
   },
   "seed": 42,
-  "reference": "Train candidates, exported annotations; neither source GT not independently verified. Not a heldout benchmark."
+  "reference": "Train candidates, exported annotations; neither source GT not independently verified. Not a heldout benchmark.",
+  "results_viewer": {
+    "source_files": {
+      "results_viewer.py": {
+        "path": "doc/2026-10-14-01-kits23-reasoning-generation/code/results_viewer.py",
+        "sha256": "4948e67eeddf642aa4d69cca2bcc04ec0fd0ee9a522a71f4acfe5fbd8d616f04"
+      },
+      "results_viewer.html": {
+        "path": "doc/2026-10-14-01-kits23-reasoning-generation/code/results_viewer.html",
+        "sha256": "b791f350b384bf2f81270d45f2b44d95a03c500e27ebb1e39972260c5164abbb"
+      },
+      "start_results_viewer.py": {
+        "path": "doc/2026-10-14-01-kits23-reasoning-generation/code/start_results_viewer.py",
+        "sha256": "b8bc3085cec8439f0a437a09456bce1198941f54a3e295c931077bb9511b984f"
+      }
+    },
+    "adaptation": "Preserve existing HTML and API; use standalone defaults, portable asset resolution, Pillow overlay, and standalone foreground/background launch."
+  }
 }

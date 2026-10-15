@@ -1,0 +1,2 @@
+# Optional saved-results viewer only. No GPU framework or model requests.
+Pillow==11.3.0
